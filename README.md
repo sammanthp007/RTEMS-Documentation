@@ -75,7 +75,8 @@ cd b-realview_pbx_a9_qemu
 $HOME/development/rtems/kernel/rtems/configure --target=arm-rtems4.12 --disable-networking --enable-rtemsbsp=realview_pbx_a9_qemu --enable-posix --prefix=$HOME/development/rtems/4.12
 ```
 We need these to confirm that nothing is wrong with the rtmes or toolchain in case we have errors for tm4c129e
-## Moving on to compiling bsp for tm4c129e
+
+# Moving on to compiling bsp for tm4c129e
 What I have done so far:
 
 ### Create a new directory and get Habeebs code that claims to have built a bsp for TM4C129E board
@@ -107,4 +108,8 @@ cd ..
 mkdir tm4c129e
 cd tm4c129e
 $HOME/development/rtems/kernel/rtems/configure --target=arm-rtems4.12 --disable-networking --enable-rtemsbsp=tm4c129e --enable-posix --prefix=$HOME/development/rtems/4.12
+
+make all
+make install
 ```
+Here, make all gives the error as mentioned in (this file)[]
