@@ -1,6 +1,9 @@
 # rtems
 Documentation for the steps taken while building RTEMS in my x86 computer for TI's TM4C arm architecture 
 
+## Diagram of how rtems is organized
+<img src='https://github.com/sammanthp007/build-rtems-documentation/blob/master/architecture_diagram_dr_bloom_office_hours.jpg' title='RTEMS Organization' width='' alt='RTEMS Organization' />
+
 ### Create a sandbox environment
 ```
 $ cd
@@ -8,7 +11,7 @@ $ mkdir -p development/rtems
 $ cd development/rtems
 ```
 
-### Get the rsb, a builder for toolchains, toolchains required for rtems architecture as shown in the diagram above
+### Get the rsb, a builder for toolchains, toolchains is required for rtems architecture as shown in the RTEMS Organization diagram above
 ```
 $ git clone git://git.rtems.org/rtems-source-builder.git rsb
 ```
