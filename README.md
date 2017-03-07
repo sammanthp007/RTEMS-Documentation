@@ -26,10 +26,54 @@ Continue only if your output is similar to:
 RTEMS Source Builder - Check, 4.12 (4c5eb8969451)
 Environment is ok
 ```
-# Build toolchains for arm and sparc architectures as well as compile toolchain to get qemu
+### Build toolchains for arm and sparc architectures as well as compile toolchain to get qemu
 ```
 $ cd rtems
 $ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 4.12/rtems-sparc
 $ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 4.12/rtems-arm
 $ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 --without-rtems devel/qemu
 ```
+## Now, compiling a bsp, an arm tm4c129e in this case
+
+### Set up the path
+```
+export PATH=$HOME/development/rtems/4.12/bin:$PATH #Or add to your PATH variable.
+```
+### Download the rtems OS in the required director
+```
+cd
+cd development/rtems
+mkdir kernel
+cd kernel
+git clone git://git.rtems.org/rtems.git rtems
+```
+### Convert all the .ac and .am files we have from the just downloaded rtems kernel 
+```
+cd rtems
+./bootstrap -c && ./bootstrap -p && $HOME/development/rtems/rsb/source-builder/sb-bootstrap
+```
+bootstrap -c is for cleaning all the remaining make and config files
+bootstrap -p is for doing smt with the preinstalled things
+and we use the sb-bootstrap from the previously received rsb for building the make and config files from .ac and .am files
+
+### Build the bsp
+```
+cd ..
+# build the sparc/erc32 machine
+# create a directory to keep the bsp for sparc/erc32
+mkdir erc32
+cd erc32
+$HOME/development/rtems/kernel/rtems/configure --prefix=$HOME/development/rtems/4.12 --target=sparc-rtems4.12 --enable-rtemsbsp=erc32 --enable-posix
+
+# build the arm/b_realview_arm
+cd ..
+# create a directory to keep the bsp for arm/realview_pbx_a9_qemu
+mkdir b-realview_pbx_a9_qemu
+cd b-realview_pbx_a9_qemu
+
+# Compile the realview-pbx-arm machine's kernel files
+$HOME/development/rtems/kernel/rtems/configure --target=arm-rtems4.12 --disable-networking --enable-rtemsbsp=realview_pbx_a9_qemu --enable-posix --prefix=$HOME/development/rtems/4.12
+```
+We need these to confirm that nothing is wrong with the rtmes or toolchain in case we have errors for tm4c129e
+## Moving on to compiling bsp for tm4c129e
+### 
