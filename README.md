@@ -76,4 +76,23 @@ $HOME/development/rtems/kernel/rtems/configure --target=arm-rtems4.12 --disable-
 ```
 We need these to confirm that nothing is wrong with the rtmes or toolchain in case we have errors for tm4c129e
 ## Moving on to compiling bsp for tm4c129e
-### 
+What I have done so far:
+
+### Create a new directory and get Habeebs code that claims to have built a bsp for TM4C129E board
+```
+cd ~/development/
+git clone https://github.com/Dipupo/rtems.git haheeb-rtems
+```
+
+### Create the patch files of the commits that habeeb implemented
+```
+cd ~/development/habeeb-rtems
+git format-patch b30ab25 --stdout > ~/development/rtems/kernel/rtems/habeeb_diff.diff
+```
+### apply the patch files created
+```
+cd ~/development/rtems/kernel/rtems
+git apply --reject habeeb_diff.diff
+```
+
+In my case, I got two .rej files. On inspection, I only needed to delete them because they were implemented, probably in another commit as well.
