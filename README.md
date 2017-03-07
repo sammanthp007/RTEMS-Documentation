@@ -26,9 +26,10 @@ Continue only if your output is similar to:
 RTEMS Source Builder - Check, 4.12 (4c5eb8969451)
 Environment is ok
 ```
-# Build toolchains for arm and sparc architectures
+# Build toolchains for arm and sparc architectures as well as compile toolchain to get qemu
 ```
 $ cd rtems
 $ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 4.12/rtems-sparc
 $ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 4.12/rtems-arm
+$ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 --without-rtems devel/qemu
 ```
