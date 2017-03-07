@@ -96,3 +96,15 @@ git apply --reject habeeb_diff.diff
 ```
 
 In my case, I got two .rej files. On inspection, I only needed to delete them because they were implemented, probably in another commit as well.
+
+### compile the bsp
+```
+cd ~/development/rtems/kernel
+cd rtems
+./bootstrap -c && ./bootstrap -p && $HOME/development/rtems/rsb/source-builder/sb-bootstrap
+
+cd ..
+mkdir tm4c129e
+cd tm4c129e
+$HOME/development/rtems/kernel/rtems/configure --target=arm-rtems4.12 --disable-networking --enable-rtemsbsp=tm4c129e --enable-posix --prefix=$HOME/development/rtems/4.12
+```
