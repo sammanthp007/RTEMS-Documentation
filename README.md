@@ -1,4 +1,11 @@
-# rtems
+# RTEMS
+Everything done here is done in a x86_64 GNU/Linux 4.12.8-2-ARCH machine
+
+## Table of Content
+- [Configuring the development environment](Topics/config_dev_env)
+- [Setting up RTEMS in SPARC](Topics/set_rtems_for_sparc)
+- [Setting up RTEMS in ARM](Topics/set_rtems_for_arm)
+
 Documentation for the steps taken while building RTEMS in my x86 computer for TI's TM4C arm architecture 
 
 ## Diagram of how rtems is organized
