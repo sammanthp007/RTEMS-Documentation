@@ -9,7 +9,7 @@ Everything done here is done in a x86_64 GNU/Linux 4.12.8-2-ARCH machine
 Documentation for the steps taken while building RTEMS in my x86 computer for TI's TM4C arm architecture 
 
 ## Diagram of how rtems is organized
-<img src='https://github.com/sammanthp007/build-rtems-documentation/blob/master/architecture_diagram_dr_bloom_office_hours.jpg' title='RTEMS Organization' width='' alt='RTEMS Organization' />
+![RTEMS Organization](Topics/images/architecture_diagram_dr_bloom_office_hours.jpg)
 
 ### Create a sandbox environment
 ```
