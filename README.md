@@ -59,9 +59,9 @@ Environment is ok
 ### Build toolchains for arm and sparc architectures as well as compile toolchain to get qemu
 ```
 $ cd rtems
-$ ../source-builder/sb-set-builder --prefix=$HOME/development/RTEMS/rtems/4.12 4.12/rtems-sparc
-$ ../source-builder/sb-set-builder --prefix=$HOME/development/RTEMS/rtems/4.12 4.12/rtems-arm
-$ ../source-builder/sb-set-builder --prefix=$HOME/development/RTEMS/rtems/4.12 --without-rtems devel/qemu
+$ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 4.12/rtems-sparc
+$ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 4.12/rtems-arm
+$ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 --without-rtems devel/qemu
 ```
 ## Now, compiling a bsp, an arm tm4c129e in this case
 
@@ -93,7 +93,7 @@ cd ..
 # create a directory to keep the bsp for sparc/erc32
 mkdir erc32
 cd erc32
-$HOME/development/rtems/kernel/rtems/configure --prefix=$HOME/development/RTEMS/rtems/4.12 --target=sparc-rtems4.12 --enable-rtemsbsp=erc32 --enable-posix
+$HOME/development/rtems/kernel/rtems/configure --prefix=$HOME/development/rtems/4.12 --target=sparc-rtems4.12 --enable-rtemsbsp=erc32 --enable-posix
 
 # build the arm/b_realview_arm
 cd ..
@@ -102,7 +102,7 @@ mkdir b-realview_pbx_a9_qemu
 cd b-realview_pbx_a9_qemu
 
 # Compile the realview-pbx-arm machine's kernel files
-$HOME/development/rtems/kernel/rtems/configure --target=arm-rtems4.12 --disable-networking --enable-rtemsbsp=realview_pbx_a9_qemu --enable-posix --prefix=$HOME/development/RTEMS/rtems/4.12
+$HOME/development/rtems/kernel/rtems/configure --target=arm-rtems4.12 --disable-networking --enable-rtemsbsp=realview_pbx_a9_qemu --enable-posix --prefix=$HOME/development/rtems/4.12
 ```
 We need these to confirm that nothing is wrong with the rtmes or toolchain in case we have errors for tm4c129e
 
@@ -137,7 +137,7 @@ cd rtems
 cd ..
 mkdir tm4c129e
 cd tm4c129e
-$HOME/development/rtems/kernel/rtems/configure --target=arm-rtems4.12 --disable-networking --enable-rtemsbsp=tm4c129e --enable-posix --prefix=$HOME/development/RTEMS/rtems/4.12
+$HOME/development/rtems/kernel/rtems/configure --target=arm-rtems4.12 --disable-networking --enable-rtemsbsp=tm4c129e --enable-posix --prefix=$HOME/development/rtems/4.12
 
 make all
 make install
