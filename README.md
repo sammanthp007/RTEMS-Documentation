@@ -2,10 +2,10 @@
 Everything done here is done in a x86_64 GNU/Linux 4.12.8-2-ARCH machine
 
 ## Table of Content
-- [What is RTEMS and how it works](Topics/#theory)
-- [Configure the dev environment](Topics/#configure-the-development-environment)
-- [Setting up RTEMS in SPARC](Topics/set_rtems_for_sparc)
-- [Setting up RTEMS in ARM](Topics/set_rtems_for_arm)
+- [What is RTEMS and how it works](#theory)
+- [Configure the dev environment](#configure-the-development-environment)
+- [Setting up RTEMS in SPARC and ARM](#build)
+- [Setting up RTEMS in ARM](#build)
 
 Documentation for the steps taken while building RTEMS in my x86 computer for TI's TM4C arm architecture 
 
@@ -59,6 +59,8 @@ Continue only if your output is similar to:
 RTEMS Source Builder - Check, 4.12 (4c5eb8969451)
 Environment is ok
 ```
+### Build
+
 ### Build toolchains for arm and sparc architectures as well as compile toolchain to get qemu
 ```
 $ cd rtems
