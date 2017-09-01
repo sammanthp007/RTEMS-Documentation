@@ -2,7 +2,8 @@
 Everything done here is done in a x86_64 GNU/Linux 4.12.8-2-ARCH machine
 
 ## Table of Content
-- [Configuring the development environment](Topics/config_dev_env)
+- [What is RTEMS and how it works](Topics/#theory)
+- [Configure the dev environment](Topics/#configure-the-development-environment)
 - [Setting up RTEMS in SPARC](Topics/set_rtems_for_sparc)
 - [Setting up RTEMS in ARM](Topics/set_rtems_for_arm)
 
@@ -33,7 +34,9 @@ RSB installs into a build *prefix*.
 Prefix: 
     - the top of a group of directories containing all the files needed to develop RTEMS applications. 
 
+RSB is a builder for toolchains. Toolchains are required for rtems architecture as shown in the RTEMS Organization diagram above
 
+## Configure the development environment
 ### Create a sandbox environment
 ```
 $ cd
@@ -41,7 +44,7 @@ $ mkdir -p development/rtems
 $ cd development/rtems
 ```
 
-### Get the rsb, a builder for toolchains, toolchains is required for rtems architecture as shown in the RTEMS Organization diagram above
+### Get the rsb, 
 ```
 $ git clone git://git.rtems.org/rtems-source-builder.git rsb
 ```
