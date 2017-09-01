@@ -12,6 +12,9 @@ Documentation for the steps taken while building RTEMS in my x86 computer for TI
 ## Diagram of how rtems is organized
 ![RTEMS Organization](Topics/images/architecture_diagram_dr_bloom_office_hours.jpg)
 
+The `<root-dir>/rsb` directory contains the RSB.
+The `<root-dir>/4.12` directory contains the build set for each architecture we are running RTEMS on.
+
 ## Theory
 RTEMS Source Builder (RSB): 
 - is a tool to aid building packages from source used by the RTEMS project.
@@ -109,6 +112,9 @@ cd b-realview_pbx_a9_qemu
 # Compile the realview-pbx-arm machine's kernel files
 $HOME/development/rtems/kernel/rtems/configure --target=arm-rtems4.12 --disable-networking --enable-rtemsbsp=realview_pbx_a9_qemu --enable-posix --prefix=$HOME/development/rtems/4.12
 ```
+
+> In english, the command above says (I am guessing here), compile RTEMS for arm-rtems4.12, using the tools from --prefix with the added options of disabling networking.
+
 We need these to confirm that nothing is wrong with the rtmes or toolchain in case we have errors for tm4c129e
 
 # Moving on to compiling bsp for tm4c129e
