@@ -6,6 +6,7 @@ Everything done here is done in a x86_64 GNU/Linux 4.12.8-2-ARCH machine
 - [Configure the dev environment](#configure-the-development-environment)
 - [Setting up RTEMS in SPARC and ARM](#build)
 - [Setting up RTEMS in ARM](#build)
+- Troubleshooting (#troubleshooting)
 
 Documentation for the steps taken while building RTEMS in my x86 computer for TI's TM4C arm architecture 
 
