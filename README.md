@@ -154,3 +154,11 @@ make all
 make install
 ```
 Here, ```make all``` gives the error as mentioned in [Error file](https://github.com/sammanthp007/build-rtems-documentation/blob/master/make%20error%20tm4c129e)
+
+## Troubleshooting
+```
+TypeError: cannot concatenate 'str' and 'general' objects
+
+# Soln:
+export the path
+```
