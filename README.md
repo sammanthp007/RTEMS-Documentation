@@ -6,7 +6,8 @@ Everything done here is done in a x86_64 GNU/Linux 4.12.8-2-ARCH machine
 - [Configure the dev environment](#configure-the-development-environment)
 - [Setting up RTEMS in SPARC and ARM](#build)
 - [Setting up RTEMS in ARM](#build)
-- Troubleshooting (#troubleshooting)
+- [Useful commands](#useful-commands)
+- [Troubleshooting](#troubleshooting)
 
 Documentation for the steps taken while building RTEMS in my x86 computer for TI's TM4C arm architecture 
 
@@ -155,6 +156,18 @@ make all
 make install
 ```
 Here, ```make all``` gives the error as mentioned in [Error file](https://github.com/sammanthp007/build-rtems-documentation/blob/master/make%20error%20tm4c129e)
+
+## Useful Commands
+
+List all bsps
+```
+$ $HOME/development/rtems/kernel/rtems/rtems-bsps
+```
+
+List all architectures
+```
+$ $HOME/development/rtems/rsb/source-builder/sb-set-builder --list-bsets
+```
 
 ## Troubleshooting
 ```
