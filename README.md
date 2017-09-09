@@ -1,5 +1,5 @@
 # RTEMS
-Everything done here is done in a x86_64 GNU/Linux 4.12.8-2-ARCH machine
+Everything done here is done in a Linux machine
 
 ## Table of Content
 - [What is RTEMS and how it works](#theory)
@@ -122,6 +122,12 @@ $HOME/development/rtems/kernel/rtems/configure --target=arm-rtems4.12 --disable-
 ```
 
 > In english, the command above says (I am guessing here), compile RTEMS for arm-rtems4.12, using the tools from --prefix with the added options of disabling networking.
+
+```
+make all
+
+make install
+```
 
 We need these to confirm that nothing is wrong with the rtmes or toolchain in case we have errors for tm4c129e
 
