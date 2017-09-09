@@ -93,41 +93,40 @@ git clone git://git.rtems.org/rtems.git rtems
 ```
 export PATH=$HOME/development/rtems/4.12/bin:$PATH #Or add to your PATH variable.
 ```
-### Convert all the .ac and .am files we have from the just downloaded rtems kernel 
+
+### Initialize the default files (.ac and .am to executables) in the rtems source
+This step initializes all the default files required. **Only run this the first time, or when we add new files. Do not run this when we update any file in RTEMS source.**
 ```
-cd rtems
+cd $HOME/development/rtems/kernel/rtems
 ./bootstrap -c && ./bootstrap -p && $HOME/development/rtems/rsb/source-builder/sb-bootstrap
 ```
 bootstrap -c is for cleaning all the remaining make and config files
 bootstrap -p is for doing smt with the preinstalled things
 and we use the sb-bootstrap from the previously received rsb for building the make and config files from .ac and .am files
 
-### Build the bsp
+### Build BSPs
 ```
-cd ..
+# for erc/sparc
+cd $HOME/development/rtems/kernel
 # build the sparc/erc32 machine
 # create a directory to keep the bsp for sparc/erc32
 mkdir erc32
 cd erc32
 $HOME/development/rtems/kernel/rtems/configure --prefix=$HOME/development/rtems/4.12 --target=sparc-rtems4.12 --enable-rtemsbsp=erc32 --enable-posix
+make all
+make install
 
-# build the arm/b_realview_arm
-cd ..
-# create a directory to keep the bsp for arm/realview_pbx_a9_qemu
+# build for arm/b_realview_arm
+cd $HOME/development/rtems/kernel
 mkdir b-realview_pbx_a9_qemu
 cd b-realview_pbx_a9_qemu
-
 # Compile the realview-pbx-arm machine's kernel files
 $HOME/development/rtems/kernel/rtems/configure --target=arm-rtems4.12 --disable-networking --enable-rtemsbsp=realview_pbx_a9_qemu --enable-posix --prefix=$HOME/development/rtems/4.12
+make all
+make install
 ```
 
 > In english, the command above says (I am guessing here), compile RTEMS for arm-rtems4.12, using the tools from --prefix with the added options of disabling networking.
-
-```
-make all
-
-make install
-```
 
 We need these to confirm that nothing is wrong with the rtmes or toolchain in case we have errors for tm4c129e
 
