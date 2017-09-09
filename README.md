@@ -4,6 +4,9 @@ Everything done here is done in a x86_64 GNU/Linux 4.12.8-2-ARCH machine
 ## Table of Content
 - [What is RTEMS and how it works](#theory)
 - [Configure the dev environment](#configure-the-development-environment)
+- [Setting up with RTMES Source Builder RSB](#setting-up-with-rtems-source-builder-rsb)
+  - [Build Toolchains](#build-toolchains)
+- [Build RTEMS](#build-rtems)
 - [Setting up RTEMS in SPARC and ARM](#build)
 - [Setting up RTEMS in ARM](#build)
 - [Useful commands](#useful-commands)
@@ -48,8 +51,8 @@ $ cd
 $ mkdir -p development/rtems
 $ cd development/rtems
 ```
-
-### Get the rsb, 
+## Setting Up With RTEMS Source Builder RSB
+### Download the source for rsb, 
 ```
 $ git clone git://git.rtems.org/rtems-source-builder.git rsb
 ```
@@ -64,28 +67,31 @@ Continue only if your output is similar to:
 RTEMS Source Builder - Check, 4.12 (4c5eb8969451)
 Environment is ok
 ```
-### Build
-
-### Build toolchains for arm and sparc architectures as well as compile toolchain to get qemu
+### Build Toolchains
+We build toolchains (the required tools/programs to build a runnable RTEMS OS on an computer architecture) for any architecture we want.
+Here we build the toolchains for sparc, arm, and i386 architecture, and also a qemu virtualization so we can work with a virtual machine that has RTEMS OS on top of qemu virtualization.
 ```
-$ cd rtems
+$ cd $HOME/development/rtems/rsb/rtems
 $ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 4.12/rtems-sparc
 $ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 4.12/rtems-arm
+$ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 4.12/rtems-i386
 $ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 --without-rtems devel/qemu
 ```
-## Now, compiling a bsp, an arm tm4c129e in this case
+
+Now, we have the required tools (gcc, gdb, ...) for the architecture mentioned above. Let's get the RTEMS source code so we can build a system with RTEMS running on a specific architecture.
+
+## Build RTEMS
+### Download the RTEMS OS
+```
+cd $HOME/development/rtems
+mkdir kernel
+cd kernel
+git clone git://git.rtems.org/rtems.git rtems
+```
 
 ### Set up the path
 ```
 export PATH=$HOME/development/rtems/4.12/bin:$PATH #Or add to your PATH variable.
-```
-### Download the rtems OS in the required director
-```
-cd
-cd development/rtems
-mkdir kernel
-cd kernel
-git clone git://git.rtems.org/rtems.git rtems
 ```
 ### Convert all the .ac and .am files we have from the just downloaded rtems kernel 
 ```
