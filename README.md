@@ -69,11 +69,12 @@ Environment is ok
 ```
 ### Build Toolchains
 We build toolchains (the required tools/programs to build a runnable RTEMS OS on an computer architecture) for any architecture we want.
-Here we build the toolchains for sparc, arm, and i386 architecture, and also a qemu virtualization so we can work with a virtual machine that has RTEMS OS on top of qemu virtualization.
+Here we build the toolchains for sparc, arm, powerpc, and i386 architecture, and also a qemu virtualization so we can work with a virtual machine that has RTEMS OS on top of qemu virtualization.
 ```
 $ cd $HOME/development/rtems/rsb/rtems
 $ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 4.12/rtems-sparc
 $ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 4.12/rtems-arm
+../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 4.12/rtems-powerpc
 $ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 4.12/rtems-i386
 $ ../source-builder/sb-set-builder --prefix=$HOME/development/rtems/4.12 --without-rtems devel/qemu
 ```
@@ -122,6 +123,15 @@ mkdir b-realview_pbx_a9_qemu
 cd b-realview_pbx_a9_qemu
 # Compile the realview-pbx-arm machine's kernel files
 $HOME/development/rtems/kernel/rtems/configure --target=arm-rtems4.12 --disable-networking --enable-rtemsbsp=realview_pbx_a9_qemu --enable-posix --prefix=$HOME/development/rtems/4.12
+make all
+make install
+
+# build for powerpc/psim
+cd $HOME/development/rtems/kernel
+mkdir psim
+cd psim
+# Compile the psim machine's kernel files
+$HOME/development/rtems/kernel/rtems/configure --target=powerpc-rtems4.12 --enable-rtemsbsp=psim --enable-posix --prefix=$HOME/development/rtems/4.12
 make all
 make install
 ```
