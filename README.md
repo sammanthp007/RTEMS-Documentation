@@ -9,6 +9,7 @@ Everything done here is done in a Linux machine
 - [Build RTEMS](#build-rtems)
 - [Setting up RTEMS in SPARC and ARM](#build)
 - [Setting up RTEMS in ARM](#build)
+- [Running programs](#running-programs)
 - [Useful commands](#useful-commands)
 - [Troubleshooting](#troubleshooting)
 
@@ -126,6 +127,13 @@ $HOME/development/rtems/kernel/rtems/configure --target=arm-rtems4.12 --disable-
 make all
 make install
 
+# build for i386/pc386
+cd $HOME/development/rtems/kernel
+mkdir pc386
+cd pc386
+# compile the pc386 machine's kernel files (build rtems for pc386)
+HOME/development/rtems/kernel/rtems/configure --target=i386-rtems4.12 --prefix=$HOME/development/rtems/4.12 --enable-rtemsbsp=pc386 USE_COM1_AS_CONSOLE=1 BSP_PRESS_KEY_FOR_RESET=0
+
 # build for powerpc/psim
 cd $HOME/development/rtems/kernel
 mkdir psim
@@ -139,6 +147,29 @@ make install
 > In english, the command above says (I am guessing here), compile RTEMS for arm-rtems4.12, using the tools from --prefix with the added options of disabling networking.
 
 We need these to confirm that nothing is wrong with the rtmes or toolchain in case we have errors for tm4c129e
+
+
+### Running Programs
+
+Running `ticker.exe` for sparc
+```
+# run from the root directory for the rtems build for sparc
+sparc-rtems4.12-run -v `find . -name ticker.exe`
+```
+
+Running `ticker.exe` for arm
+```
+# run from the root directory for the rtems build for arm
+QEMU_AUDIO_DRV=none qemu-system-arm -no-reboot -net none -M realview-pbx-a9 -m 256M -serial stdio -kernel `find . -name ticker.exe`
+```
+
+Running `ticker.exe` for i386
+```
+# run from the root directory for the rtems build for i386
+qemu-system-i386 -kernel `find . -name ticker.exe` -append "--console=/dev/com1" -serial stdio
+```
+
+
 
 # Moving on to compiling bsp for tm4c129e
 What I have done so far:
