@@ -20,8 +20,6 @@ Everything done here is done in a Linux machine.
 - [Troubleshooting](#troubleshooting)
   - [TypeError: cannot concatenate str and general objects](#typeerror-cannot-concatenate-str-and-general-objects)
   - [Missing Packages or Broken Mirror](#missing-packages-or-broken-mirror)
-  
----
 - [Beta: Moving on to compiling bsp for tm4c129e TI's TM4C arm architecture ](#moving-on-to-compiling-bsp-for-tm4c129e)
 
 ## Diagram of how rtems is organized
