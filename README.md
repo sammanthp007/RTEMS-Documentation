@@ -14,8 +14,8 @@ Everything done here is done in a Linux machine. This is my documentation as I a
 - [Running programs](#running-programs)
 - [Useful commands](#useful-commands)
 - [Troubleshooting](#troubleshooting)
-  - [TypeError: cannot concatenate str and general objects](#TypeError-cannot-concatenate-str-and-general-objects)
-  - [Missing Packages or Broken Mirror](#Missing-Packages-or-Broken-Mirror)
+  - [TypeError: cannot concatenate str and general objects](#typeError-cannot-concatenate-str-and-general-objects)
+  - [Missing Packages or Broken Mirror](#missing-packages-or-broken-mirror)
   
 ---
 - [Beta: Moving on to compiling bsp for tm4c129e TI's TM4C arm architecture ](#moving-on-to-compiling-bsp-for-tm4c129e)
