@@ -1,11 +1,15 @@
 # RTEMS
-Everything done here is done in a Linux machine. This is my documentation as I am exploring developing for RTEMS. The original documentation can be found in [Original Documentation (https://ftp.rtems.org/pub/rtems/people/chrisj/docs/user/start/index.html).
+This is my documentation as I am exploring developing for RTEMS. The original documentation can be found in [Original Documentation (https://ftp.rtems.org/pub/rtems/people/chrisj/docs/user/start/index.html).
+Everything done here is done in a Linux machine. 
 
 ## Table of Content
-- [What is RTEMS and how it works](#theory)
+- [What is rtems and how it works](#theory)
 - [Configure the dev environment](#configure-the-development-environment)
-- [Setting up with RTEMS Source Builder RSB](#setting-up-with-rtems-source-builder-rsb)
+  - [Create a sandbox environment](#create-a-sandbox-environment)
   - [Prerequisite](#prerequisite)
+- [Setting up with RTEMS Source Builder RSB](#setting-up-with-rtems-source-builder-rsb)
+  - [Download the source for rsb](#download-the-source-for-rsb)
+  - [Check if your computer can support building the toolchain](#check-if-your-computer-can-support-building-the-toolchain)
   - [Build Toolchains](#build-toolchains)
 - [Build RTEMS](#build-rtems)
   - [Download the RTEMS OS](#download-the-rtems-os)
@@ -57,7 +61,6 @@ $ cd
 $ mkdir -p development/rtems
 $ cd development/rtems
 ```
-## Setting Up With RTEMS Source Builder RSB
 ### Prerequisite
 Download the following packages. Debian packages are mentioned here.
 ```
@@ -65,8 +68,8 @@ sudo apt update
 sudo apt upgrade
 sudo apt install bison texinfo flex make binutils gcc g++ gdb unzip git python2.7-dev zlib1g-dev libncurses5-dev
 ```
-
-### Download the source for rsb, 
+## Setting Up With RTEMS Source Builder RSB
+### Download the source for rsb 
 ```
 $ git clone git://git.rtems.org/rtems-source-builder.git rsb
 ```
