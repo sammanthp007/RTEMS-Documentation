@@ -1,10 +1,11 @@
 # RTEMS
-Everything done here is done in a Linux machine
+Everything done here is done in a Linux machine. This is my documentation as I am exploring developing for RTEMS. The original documentation can be found in [Original Documentation (https://ftp.rtems.org/pub/rtems/people/chrisj/docs/user/start/index.html).
 
 ## Table of Content
 - [What is RTEMS and how it works](#theory)
 - [Configure the dev environment](#configure-the-development-environment)
-- [Setting up with RTMES Source Builder RSB](#setting-up-with-rtems-source-builder-rsb)
+- [Setting up with RTEMS Source Builder RSB](#setting-up-with-rtems-source-builder-rsb)
+  - [Prerequisite](#prerequisite)
   - [Build Toolchains](#build-toolchains)
 - [Build RTEMS](#build-rtems)
   - [Download the RTEMS OS](#download-the-rtems-os)
@@ -13,6 +14,9 @@ Everything done here is done in a Linux machine
 - [Running programs](#running-programs)
 - [Useful commands](#useful-commands)
 - [Troubleshooting](#troubleshooting)
+  - [TypeError: cannot concatenate str and general objects](TypeError:-cannot-concatenate-str-and-general-objects)
+  - [Missing Packages or Broken Mirror](Missing-Packages-or-Broken-Mirror)
+  
 ---
 - [Beta: Moving on to compiling bsp for tm4c129e TI's TM4C arm architecture ](#moving-on-to-compiling-bsp-for-tm4c129e)
 
@@ -54,6 +58,14 @@ $ mkdir -p development/rtems
 $ cd development/rtems
 ```
 ## Setting Up With RTEMS Source Builder RSB
+### Prerequisite
+Download the following packages. Debian packages are mentioned here.
+```
+sudo apt update
+sudo apt upgrade
+sudo apt install bison texinfo flex make binutils gcc g++ gdb unzip git python2.7-dev zlib1g-dev libncurses5-dev
+```
+
 ### Download the source for rsb, 
 ```
 $ git clone git://git.rtems.org/rtems-source-builder.git rsb
@@ -223,9 +235,13 @@ $ $HOME/development/rtems/rsb/source-builder/sb-set-builder --list-bsets
 ```
 
 ## Troubleshooting
+#### TypeError: cannot concatenate str and general objects
 ```
 TypeError: cannot concatenate 'str' and 'general' objects
 
 # Soln:
 export the path
 ```
+
+#### Missing Packages or Broken Mirror
+If some packages are missing, you may need to download the zip from somewhere. I have some save in google drive since the mirrors seem to be broken. You can download the required packages at [Drive](https://drive.google.com/file/d/0B_ZAkr8A2WagRkJEQUZhOWVtY3M/view?usp=sharing)
