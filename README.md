@@ -13,8 +13,8 @@ Everything done here is done in a Linux machine
 - [Running programs](#running-programs)
 - [Useful commands](#useful-commands)
 - [Troubleshooting](#troubleshooting)
-
-Documentation for the steps taken while building RTEMS in my x86 computer for TI's TM4C arm architecture 
+---
+- [Beta: Moving on to compiling bsp for tm4c129e TI's TM4C arm architecture ](#moving-on-to-compiling-bsp-for-tm4c129e)
 
 ## Diagram of how rtems is organized
 ![RTEMS Organization](Topics/images/architecture_diagram_dr_bloom_office_hours.jpg)
