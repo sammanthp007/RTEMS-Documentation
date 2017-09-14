@@ -14,7 +14,7 @@ Everything done here is done in a Linux machine. This is my documentation as I a
 - [Running programs](#running-programs)
 - [Useful commands](#useful-commands)
 - [Troubleshooting](#troubleshooting)
-  - [TypeError: cannot concatenate str and general objects](#typeError-cannot-concatenate-str-and-general-objects)
+  - [TypeError: cannot concatenate str and general objects](#typeerror-cannot-concatenate-str-and-general-objects)
   - [Missing Packages or Broken Mirror](#missing-packages-or-broken-mirror)
   
 ---
