@@ -183,7 +183,7 @@ Running `ticker.exe` for i386
 qemu-system-i386 -kernel `find . -name ticker.exe` -append "--console=/dev/com1" -serial stdio
 ```
 
-Since I was not able to run `ticker.exe`, I ran `rtems-test` in `rtems-tools`
+Since I was not able to run `ticker.exe`, I ran `rtems-test` in `rtems-tools`. [RTEMS tester](ftp://ftp.rtems.org/pub/rtems/people/chrisj/rtems-tester/rtems-tester.html)
 ```
 cd $HOME/development/rtems/rsb/.../rtems-tools/
 rtems-test --rtems-bsp=psim-run --rtems-tools=$HOME/development/rtems/4.12 \ /home/rtemsuser/development/rtems/kernel/psim/powerpc-rtems4.12/c/psim/testsuites
