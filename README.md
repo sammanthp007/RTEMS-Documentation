@@ -148,6 +148,8 @@ cd pc386
 # compile the pc386 machine's kernel files (build rtems for pc386)
 HOME/development/rtems/kernel/rtems/configure --target=i386-rtems4.12 --prefix=$HOME/development/rtems/4.12 --enable-rtemsbsp=pc386 USE_COM1_AS_CONSOLE=1 BSP_PRESS_KEY_FOR_RESET=0
 
+# Notes on the USE_COM1_AS_CONSOLE=1 and BSP_PRESS_KEY_FOR_RESET=0 options can be found in https://devel.rtems.org/wiki/Developer/Simulators/QEMU#Usingthertems-testingModule
+
 # build for powerpc/psim
 cd $HOME/development/rtems/kernel
 mkdir psim
