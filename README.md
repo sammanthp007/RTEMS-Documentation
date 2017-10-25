@@ -258,5 +258,45 @@ TypeError cannot concatenate 'str' and 'general' objects
 export the path
 ```
 
+### For installing 4.10
+#### error: building sparc-rtems4.10-gcc-4.4.7-newlib-1.18.0-x86_64-linux-gnu-1
+```
+package: sparc-rtems4.10-gcc-4.4.7-newlib-1.18.0-x86_64-linux-gnu-1
+building: sparc-rtems4.10-gcc-4.4.7-newlib-1.18.0-x86_64-linux-gnu-1
+error: building sparc-rtems4.10-gcc-4.4.7-newlib-1.18.0-x86_64-linux-gnu-1
+Build FAILED
+  See error report: rsb-report-sparc-rtems4.10-gcc-4.4.7-newlib-1.18.0-x86_64-linux-gnu-1.txt
+error: building sparc-rtems4.10-gcc-4.4.7-newlib-1.18.0-x86_64-linux-gnu-1
+```
+Solution:
+I changed the version of my computer's gcc to 4.7 (not 4.4.7, because i could not find a way to get it through apt, and I did not want to install the binaries and install).
+```
+# add the trusty universe to apt. Open /etc/apt/sources.list and add the following two lines:
+deb http://archive.ubuntu.com/ubuntu/ trusty universe
+deb-src http://archive.ubuntu.com/ubuntu/ trusty universe
+
+# then run
+sudo apt install gcc-4.7
+
+# then update-alternative
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.7 20
+sudo update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 30
+sudo update-alternatives --set cc /usr/bin/gcc
+
+sudo update-alternatives --config gcc
+
+
+# Now try to build the toolchain
+```
+- I was able to understand the error in the error file about missing [toplev.o] [here](https://unix.stackexchange.com/a/219709)
+- I was able to then know how to add a repo to apt from [here](https://askubuntu.com/a/227785) which in my case is mentioned above
+- And eventhough it was 4.7 but i needed 4.4.7, I was confident that this would work because it was mentioned [here](https://stackoverflow.com/a/29187423/4867689)
+- And I learned about updating alternatives of a tool [here](https://askubuntu.com/a/26518)
+
+Furthermore, if this had not worked, I would have tried to run the pathes mentioned in [this email thread](https://lists.rtems.org/pipermail/devel/2016-May/015127.html) which was referred to in [this ticker[(https://devel.rtems.org/ticket/2724)
+
+And one last resource for [gcc newlib debugging(https://devel.rtems.org/wiki/Debugging/Newlib) that I did not know what to make of was also found.
+
+
 #### Missing Packages or Broken Mirror
 If some packages are missing, you may need to download the zip from somewhere. I have some save in google drive since the mirrors seem to be broken. You can download the required packages at [Drive](https://drive.google.com/file/d/0B_ZAkr8A2WagRkJEQUZhOWVtY3M/view?usp=sharing)
