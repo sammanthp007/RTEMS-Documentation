@@ -1,0 +1,31 @@
+Since I am getting the following error while trying to compile for sparc architecture in a Mac high sierra:
+```
+In file included from /Users/gwachey/development/rtems/rsb/rtems/build/sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-apple-darwin17.2.0-1/build/sparc-rtems5/leon3v7/libstdc++-    v3/include/bits/allocator.h:46:0,  
+from /Users/gwachey/development/rtems/rsb/rtems/build/sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-apple-darwin17.2.0-1/build/sparc-rtems5/leon3v7/libstdc++-    v3/include/string:41,
+  from /Users/gwachey/development/rtems/rsb/rtems/build/sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-apple-darwin17.2.0-1/build/sparc-rtems5/leon3v7/libstdc++-    v3/include/bits/locale_classes.h:40,
+  from /Users/gwachey/development/rtems/rsb/rtems/build/sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-apple-darwin17.2.0-1/build/sparc-rtems5/leon3v7/libstdc++-    v3/include/locale:39,
+  from ../../../../../../gcc-7.2.0/libstdc++-v3/src/c++98/codecvt.cc:25:
+/Users/gwachey/development/rtems/rsb/rtems/build/sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-apple-darwin17.2.0-1/build/sparc-rtems5/leon3v7/libstdc++-v3/include/sparc-rtems5/bits/c++allocator.h:33:10: fatal error: ext/new_allocator.h: No such file or directory
+  #include <ext/new_allocator.h>
+           ^~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[9]: *** [codecvt.lo] Error 1
+make[9]: *** Waiting for unfinished jobs....
+make[8]: *** [all-recursive] Error 1
+make[7]: *** [all-recursive] Error 1
+make[6]: *** [all] Error 2
+make[5]: *** [multi-do] Error 1
+make[4]: *** [all-multi] Error 2
+make[3]: *** [all-recursive] Error 1\
+make[2]: *** [all] Error 2
+make[1]: *** [all-target-libstdc++-v3] Error 2
+make: *** [all] Error 2
+shell cmd failed: /bin/sh -ex  /Users/gwachey/development/rtems/rsb/rtems/build/sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-apple-darwin17.2.0-1/doit
+error: building sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-apple-darwin17.2.0-1
+
+```
+
+I changed the error containing 
+`/Users/gwachey/development/rtems/rsb/rtems/build/sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-apple-darwin17.2.0-1/build/sparc-rtems5/leon3v7/libstdc++-v3/include/sparc-rtems5/bits/c++allocator.h`
+file to have the line `#include <ext/new_allocator.h>` change to
+`#include <../../ext/new_allocator.h>`
