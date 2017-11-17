@@ -1,4 +1,6 @@
 Since I am getting the following error while trying to compile for sparc architecture in a Mac high sierra:
+## Change 1
+
 ```
 In file included from /Users/gwachey/development/rtems/rsb/rtems/build/sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-apple-darwin17.2.0-1/build/sparc-rtems5/leon3v7/libstdc++-    v3/include/bits/allocator.h:46:0,  
 from /Users/gwachey/development/rtems/rsb/rtems/build/sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-apple-darwin17.2.0-1/build/sparc-rtems5/leon3v7/libstdc++-    v3/include/string:41,
@@ -29,3 +31,13 @@ I changed the error containing
 `/Users/gwachey/development/rtems/rsb/rtems/build/sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-apple-darwin17.2.0-1/build/sparc-rtems5/leon3v7/libstdc++-v3/include/sparc-rtems5/bits/c++allocator.h`
 file to have the line `#include <ext/new_allocator.h>` change to
 `#include <../../ext/new_allocator.h>`
+
+## Change 2
+: fatal error: bits/os_defines.h: No such file or directory                                                                                                    
+
+Changed  `line 533` and `line 536` of `/Users/gwachey/development/rtems/rsb/rtems/build/sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-apple-darwin17.2.0-1/build/sparc-rtems5/soft/libstdc++-v3/include/sparc-rtems5/bits/c++config.h`
+from 
+
+`#include <bits/os_defines.h>` to `#include <./os_defines.h>`
+and
+`#include <./cpu_defines.h>` to `#include <./cpu_defines.h>`
