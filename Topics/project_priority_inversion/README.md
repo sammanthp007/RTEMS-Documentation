@@ -44,3 +44,8 @@ mkdir erc32
 cd erc32
 $HOME/development/rtems/kernel/rtems/configure --prefix=$HOME/development/rtems/5 --target=sparc-rtems5 --enable-rtemsbsp=erc32 --enable-posix ENABLE_STRICT_ORDER_MUTEX=1 --enable-tests=yes --disable-networking 
 ```
+
+## Run Tests
+```
+# run from samples
+sparc-rtems5-run -v `find . -name ticker.exe`
