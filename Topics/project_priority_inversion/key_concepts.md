@@ -61,3 +61,13 @@ RTEMS supports the four locking protocols. For this project, we are focusing on 
 Since RTEMS 5.1, priority updates due to the locking protocols take place immediately and are propagated recursively.
 The mutex owner and wait for mutex relationships define a directed acyclic graph (DAG).
 The run-time of the mutex obtain, release and timeout operations depend on the complexity of this resource dependency graph.
+
+# Thread Queues
+In case more than one thread may wait on a synchronization object, e.g. a semaphore or a message queue, then the waiting threads are added to a data structure called the thread queue.
+Thread queues are named task wait queues in the Classic API.
+There are two thread queuing disciplines available which define the order of the threads on a particular thread queue.
+Threads can wait in FIFO or priority order.
+
+We will only deal with uni-processor, so I am skipping all details for SMP.
+
+
