@@ -45,9 +45,20 @@ The following managers were specifically designed for communication and synchron
   -  **Signal**: The signal manager supports only asynchronous communication and is typically used for exception handling.
 
 # Locking Protocols
-RTEMS supports the four locking protocols
-  - Immediate Ceiling Priority Protocol (ICPP)
-  - Priority Inheritance Protocol
-  - Multiprocessor Resource Sharing Protocol (MrsP)
-  - O(m) Independence-Preserving Protocol (OMIP)
+RTEMS supports the four locking protocols. For this project, we are focusing on the Priority Inheritance Protocol (PIP).
+  - **Immediate Ceiling Priority Protocol (ICPP)**: 
+  Each mutex using the Immediate Ceiling Priority Protocol (ICPP) has a ceiling priority.
+  The priority of the mutex owner is immediately raised to the ceiling priority of the mutex.
+  In case the thread owning the mutex releases the mutex, then the normal priority of the thread is restored.
 
+  This requires an overall knowledge of the application as a whole.
+  The need to identify the highest priority thread which will attempt to obtain a particular mutex can be a difficult task in a large, complicated system.
+  - **Priority Inheritance Protocol**: The priority of the mutex owner is raised to the highest priority of all threads that currently wait for ownership of this mutex
+
+  - **Multiprocessor Resource Sharing Protocol (MrsP)**: 
+  The Multiprocessor Resource Sharing Protocol (MrsP) is a generalization of the priority ceiling protocol to clustered scheduling.
+  - **O(m) Independence-Preserving Protocol (OMIP)**: it is a generalization of the PIP to clustered scheduling which avoids the non-preemptive sections present with priority boosting.
+
+Since RTEMS 5.1, priority updates due to the locking protocols take place immediately and are propagated recursively.
+The mutex owner and wait for mutex relationships define a directed acyclic graph (DAG).
+The run-time of the mutex obtain, release and timeout operations depend on the complexity of this resource dependency graph.
