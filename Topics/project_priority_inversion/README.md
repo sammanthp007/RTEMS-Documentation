@@ -2,7 +2,8 @@
 
 ## Table of Content
 - [Installation for master on posix supported OS (MacOS in my case)](#installation)
-- [Readings from C User Guide for RTEMS](./key_concepts.md)
+- [Summary of Key Concepts from C User Guide for RTEMS](./key_concepts.md)
+- [Summary of task State Transition from C User Guide for RTEMS](./scheduling_concepts.md)
 
 ## INSTALLATION
 
