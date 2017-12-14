@@ -36,11 +36,18 @@ A real-time executive should provide an application with the following capabilit
   - Synchronization of tasks and ISRs
 
 The following managers were specifically designed for communication and synchronization:
-  -  *Semaphore*: The semaphore manager supports mutual exclusion involving the synchronization
+  -  **Semaphore**: The semaphore manager supports mutual exclusion involving the synchronization
     of access to one or more shared user resources. Binary semaphores may utilize
     the optional priority inheritance algorithm to avoid the problem of priority
     inversion.
-  -  *Message Queue*: The message manager sup- ports both communication and synchronization.
-  -  *Event*: The event manager primarily provides a high performance synchronization mechanism.
-  -  *Signal*: The signal manager supports only asynchronous communication and is typically used for exception handling.
+  -  **Message Queue**: The message manager sup- ports both communication and synchronization.
+  -  **Event**: The event manager primarily provides a high performance synchronization mechanism.
+  -  **Signal**: The signal manager supports only asynchronous communication and is typically used for exception handling.
+
+# Locking Protocols
+RTEMS supports the four locking protocols
+  - Immediate Ceiling Priority Protocol (ICPP)
+  - Priority Inheritance Protocol
+  - Multiprocessor Resource Sharing Protocol (MrsP)
+  - O(m) Independence-Preserving Protocol (OMIP)
 
