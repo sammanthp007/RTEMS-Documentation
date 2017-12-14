@@ -1,4 +1,10 @@
-# INSTALLATION FOR MASTER ON POSIX SUPPORTED OS (MacOS in my case)
+# Project: Priority Inversion
+
+## Table of Content
+- [Installation for master on posix supported OS (MacOS in my case)](#installation)
+- [Readings from C User Guide for RTEMS](./Topics/project_priority_inversion/key_concepts.md)
+
+## INSTALLATION
 
 ## Build the toolchain
 ```
