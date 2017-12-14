@@ -67,7 +67,21 @@ In case more than one thread may wait on a synchronization object, e.g. a semaph
 Thread queues are named task wait queues in the Classic API.
 There are two thread queuing disciplines available which define the order of the threads on a particular thread queue.
 Threads can wait in FIFO or priority order.
+A doubly-linked list (chain) is used to implement the FIFO queues yielding a 𝑂(1) worst-case time complexity for enqueue and dequeue operations.
+A red-black tree is used to implement the priority queues yielding a 𝑂(𝑙𝑜𝑔(𝑛)) worst-case time complexity for enqueue and dequeue operations with 𝑛 being the count of threads already on the queue.
 
 We will only deal with uni-processor, so I am skipping all details for SMP.
+
+# Time
+The basic unit of time in RTEMS is known as a clock tick or simply tick.
+The tick interval is defined by the application configuration option `CONFIGURE_MICROSECONDS_PER_TICK`.
+The tick interval defines the basic resolution of all interval and calendar time operations.
+Obviously, the directives which use intervals or wall time cannot operate without some external mechanism which provides a periodic clock tick.
+This clock tick is provided by the clock driver.
+The tick precision and stability depends on the clock driver and interrupt latency. Most clock drivers provide a timecounter to measure the time with a higher resolution than the tick.
+By tracking time in units of ticks, RTEMS is capable of supporting interval timing functions such as task delays, timeouts, timeslicing, the delayed execution of timer service routines, and the rate monotonic scheduling of tasks.
+An interval is defined as a number of ticks relative to the current time.
+For example, when a task delays for an interval of ten ticks, it is implied that the task will not execute until ten clock ticks have occurred.
+All intervals are specified using data type `rtems_interval`.
 
 
