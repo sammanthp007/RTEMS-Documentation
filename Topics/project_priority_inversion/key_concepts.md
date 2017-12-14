@@ -50,9 +50,8 @@ RTEMS supports the four locking protocols. For this project, we are focusing on 
   Each mutex using the Immediate Ceiling Priority Protocol (ICPP) has a ceiling priority.
   The priority of the mutex owner is immediately raised to the ceiling priority of the mutex.
   In case the thread owning the mutex releases the mutex, then the normal priority of the thread is restored.
-
-  This requires an overall knowledge of the application as a whole.
-  The need to identify the highest priority thread which will attempt to obtain a particular mutex can be a difficult task in a large, complicated system.
+  *This requires an overall knowledge of the application as a whole.
+  The need to identify the highest priority thread which will attempt to obtain a particular mutex can be a difficult task in a large, complicated system.*
   - **Priority Inheritance Protocol**: The priority of the mutex owner is raised to the highest priority of all threads that currently wait for ownership of this mutex
 
   - **Multiprocessor Resource Sharing Protocol (MrsP)**: 
