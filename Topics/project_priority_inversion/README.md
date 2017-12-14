@@ -2,7 +2,7 @@
 
 ## Table of Content
 - [Installation for master on posix supported OS (MacOS in my case)](#installation)
-- [Readings from C User Guide for RTEMS](./Topics/project_priority_inversion/key_concepts.md)
+- [Readings from C User Guide for RTEMS](./key_concepts.md)
 
 ## INSTALLATION
 
