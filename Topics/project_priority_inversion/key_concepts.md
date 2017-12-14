@@ -75,13 +75,34 @@ We will only deal with uni-processor, so I am skipping all details for SMP.
 # Time
 The basic unit of time in RTEMS is known as a clock tick or simply tick.
 The tick interval is defined by the application configuration option `CONFIGURE_MICROSECONDS_PER_TICK`.
+
 The tick interval defines the basic resolution of all interval and calendar time operations.
+
 Obviously, the directives which use intervals or wall time cannot operate without some external mechanism which provides a periodic clock tick.
 This clock tick is provided by the clock driver.
 The tick precision and stability depends on the clock driver and interrupt latency. Most clock drivers provide a timecounter to measure the time with a higher resolution than the tick.
+
 By tracking time in units of ticks, RTEMS is capable of supporting interval timing functions such as task delays, timeouts, timeslicing, the delayed execution of timer service routines, and the rate monotonic scheduling of tasks.
 An interval is defined as a number of ticks relative to the current time.
 For example, when a task delays for an interval of ten ticks, it is implied that the task will not execute until ten clock ticks have occurred.
+
 All intervals are specified using data type `rtems_interval`.
+
+# Timer and Timeouts
+- **Timeouts**: used to detect if some operations need more time than expected.
+Since the unexpected happens hopefully rarely, timeout timers are usually removed before they expire.
+The critical operations are insert and removal.
+For example, they are important for the performance of a network stack.
+- **Timers**:  used to carry out some work in the future.
+They usually expire and need a high resolution.
+An example use case is a time driven scheduler, e.g. rate-monotonic or EDF.
+
+# Memory Management
+
+RTEMS memory management facilities can be grouped into two classes: dynamic memory allo- cation and address translation. Dynamic memory allocation is required by applications whose memory requirements vary through the application’s course of execution. Address translation is needed by applications which share memory with another CPU or an intelligent Input/Output processor. The following RTEMS managers provide facilities to manage memory:
+• Region
+• Partition
+• Dual Ported Memory
+RTEMS memory management features allow an application to create simple memory pools of fixed size buffers and/or more complex memory pools of variable size segments. The partition manager provides directives to manage and maintain pools of fixed size entities such as resource control blocks. Alternatively, the region manager provides a more general purpose memory allocation scheme that supports variable size blocks of memory which are dynamically obtained and freed by the application. The dual-ported memory manager provides executive support for address translation between internal and external dual-ported RAM address space.
 
 
