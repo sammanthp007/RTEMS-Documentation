@@ -10,16 +10,16 @@ RTEMS provides directives which can be used to dynamically create, delete, and m
   ```
     rtems_name my_name;
     my_name = rtems_build_name( 'L', 'I', 'T', 'E' );
-    ```
+  ```
   - `rtems_object_get_name` can be used to obtain the name of any RTEMS object using just its ID. This routine attempts to convert the name into a printable string.
   ```
   #include <rtems.h>
-#include <rtems/bspIo.h> void print_name(rtems_id id) {
-char buffer[10]; /* name assumed to be 10 characters or less */ char *result;
-result = rtems_object_get_name( id, sizeof(buffer), buffer );
-printk( "ID=0x%08x name=%s\n", id, ((result) ? result : "no name") );
-}
-```
+  #include <rtems/bspIo.h> void print_name(rtems_id id) {
+    char buffer[10]; /* name assumed to be 10 characters or less */ char *result;
+    result = rtems_object_get_name( id, sizeof(buffer), buffer );
+    printk( "ID=0x%08x name=%s\n", id, ((result) ? result : "no name") );
+  }
+  ```
 
 2. Object ID:
   - An object ID is a unique unsigned integer value which uniquely identifies an object instance. Object IDs are passed as arguments to many directives in RTEMS and RTEMS translates the ID to an internal object pointer.
