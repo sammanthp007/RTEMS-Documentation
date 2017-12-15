@@ -5,6 +5,7 @@
 - [Summary of Key Concepts from C User Guide for RTEMS](./key_concepts.md)
 - [Summary of Task State Transition and Scheduling Manager Directives from C User Guide for RTEMS](./scheduling_concepts.md)
 - [Summary of Initailization Manager with Directives from C User Guide for RTEMS](./initialization_manager.md)
+- [Summary of Task Manager with Directives from C User Guide for RTEMS](./task_manager.md)
 
 ## INSTALLATION
 
