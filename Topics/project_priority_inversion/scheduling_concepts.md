@@ -49,3 +49,60 @@ A task enters the ready state due to any of the following conditions:
 - The running task may reenable its preemption mode and a task exists in the ready queue that has a higher priority than the running task.
 - The running task lowers its own priority and another task is of higher priority as a result.
 - The running task raises the priority of a task above its own and the running task is in preemption mode.
+
+## Directives
+### SCHEDULER_IDENT - Get ID of a scheduler
+Identifies a scheduler by its name.
+```
+rtems_status_code rtems_scheduler_ident(
+    rtems_name  name,
+    rtems_id   *id
+);
+```
+
+### SCHEDULER_IDENT_BY_PROCESSOR - Get ID of a scheduler by processor
+Identifies a scheduler by a processor.
+```
+rtems_status_code rtems_scheduler_ident_by_processor(
+  uint32_t cpu_index,
+  rtems_id *id
+);
+```
+
+### SCHEDULER_IDENT_BY_PROCESSOR_SET - Get ID of a scheduler by processor set
+Identifies a scheduler by a processor set.
+```
+rtems_status_code rtems_scheduler_ident_by_processor_set(
+  size_t cpusetsize,
+  const cpu_set_t *cpuset,
+  rtems_id *id
+);
+```
+
+### SCHEDULER_GET_PROCESSOR_SET - Get processor set of a scheduler
+Returns the processor set owned by the scheduler instance in cpuset.
+```
+rtems_status_code rtems_scheduler_get_processor_set(
+  rtems_id scheduler_id,
+  size_t cpusetsize,
+  cpu_set_t *cpuset
+);
+```
+
+### SCHEDULER_ADD_PROCESSOR - Add processor to a scheduler
+Adds a processor to the set of processors owned by the specified scheduler instance.
+```
+rtems_status_code rtems_scheduler_add_processor(
+  rtems_id scheduler_id,
+  uint32_t cpu_index
+);
+```
+
+### SCHEDULER_REMOVE_PROCESSOR - Remove processor from a scheduler
+Removes a processor from set of processors owned by the specified scheduler instance.
+```
+rtems_status_code rtems_scheduler_remove_processor(
+  rtems_id scheduler_id,
+  uint32_t cpu_index
+);
+```
