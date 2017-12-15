@@ -8,7 +8,7 @@ The original documentation can be found in [Original Documentation](https://ftp.
 Everything done here is done in a Linux machine. 
 
 ## Table of Content
-- ### [Introduction and Building]
+- ### [Introduction and Building](#diagram-of-how-rtems-is-organized)
   - [What is rtems and how it works](#theory)
   - [Configure the dev environment](#configure-the-development-environment)
     - [Create a sandbox environment](#create-a-sandbox-environment)
