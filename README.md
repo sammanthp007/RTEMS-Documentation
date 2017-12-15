@@ -31,7 +31,7 @@ Everything done here is done in a Linux machine.
 - ### [Project: Moving on to compiling bsp for tm4c129e TI's TM4C arm architecture ](#moving-on-to-compiling-bsp-for-tm4c129e)
 
 ## Diagram of how rtems is organized
-![RTEMS Organization](Topics/images/architecture_diagram_dr_bloom_office_hours.jpg)
+![RTEMS Organization](assets/architecture_diagram_dr_bloom_office_hours.jpg)
 
 The `<root-dir>/rsb` directory contains the RSB.
 The `<root-dir>/4.12` directory contains the build set for each architecture we are running RTEMS on.
