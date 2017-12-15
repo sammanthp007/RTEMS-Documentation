@@ -12,3 +12,5 @@ Disadvantage:
 - The main limitation of paravirtualization is the fact that the guest OS must be tailored specifically to run on top of the virtual machine monitor.
 
 Which is why we will need to update the rtems bsp for each architecture, since rtems will need to comply with all architecture specifically.
+
+# STOPPED WORKING ON IT
