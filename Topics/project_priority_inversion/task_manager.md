@@ -110,7 +110,9 @@ The task ID is used by other directives to manipulate this task.
 ### `rtems_task_start` - Start a task
 The `rtems_task_start` directive is used to place a dormant task in the ready state.
 This enables the task to compete, based on its current priority, for the processor and other system resources.
+
 Any actions, such as suspension or change of priority, performed on a task prior to starting it are nullified when the task is started.
+
 With the `rtems_task_start` directive the user specifies the task’s starting address and argument.
 The argument is used to communicate some startup information to the task. As part of this directive, RTEMS initializes the task’s stack based upon the task’s initial execution mode and start address.
 The starting argument is passed to the task in accordance with the target processor’s calling convention.
@@ -119,15 +121,20 @@ The starting argument is passed to the task in accordance with the target proces
 The `rtems_task_restart` directive restarts a task at its initial starting address with its original priority and execution mode, but with a possibly different argument.
 The new argument may be used to distinguish between the original invocation of the task and subsequent invocations.
 The task’s stack and control block are modified to reflect their original creation values.
+
 Although references to resources that have been requested are cleared, resources allocated by the task are NOT automatically returned to RTEMS.
+
 A task cannot be restarted unless it has previously been started (i.e. dormant tasks cannot be restarted).
+
 All restarted tasks are placed in the ready state.
 
 ### `rtems_task_delete` - Delete a task
 RTEMS provides the `rtems_task_delete` directive to allow a task to delete itself or any other task.
 This directive removes **all RTEMS references to the task**, **frees the task’s control block**, **removes it from resource wait queues**, and **deallocates its stack** as well as the **optional floating point context**.
+
 The task’s name and ID become inactive at this time, and any subsequent references to either of them is invalid.
 In fact, RTEMS may reuse the task ID for another task which is created later in the application.
+
 **Unexpired delay timers** (i.e. those used by `rtems_task_wake_after` and `rtems_task_wake_when`) and **timeout timers** associated with the task are automatically deleted, however, other resources dynamically allocated by the task are NOT automatically returned to RTEMS.
 Therefore, before a task is deleted, all of its dynamically allocated resources should be deallocated by the user.
 This may be accomplished by instructing the task to delete itself rather than directly deleting the task.
@@ -141,7 +148,9 @@ This implies that a task may be suspended as well as blocked waiting either to a
 ### `rtems_task_resume` - Resume a task
 The `rtems_task_resume` directive is used to remove another task from the suspended state.
 If the task is not also blocked, resuming it will place it in the ready state, allowing it to once again compete for the processor and resources.
+
 If the task was blocked as well as suspended, this directive clears the suspension and leaves the task in the blocked state.
+
 Suspending a task which is already suspended or resuming a task which is not suspended is considered an error.
 
 ### `rtems_task_is_suspended` - Determine if a task is suspended 
