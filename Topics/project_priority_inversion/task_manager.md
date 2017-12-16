@@ -10,7 +10,7 @@ The task manager provides a comprehensive set of directives to create, delete, a
 - `rtems_task_suspend` - Suspend a task
 - `rtems_task_resume` - Resume a task
 - `rtems_task_is_suspended` - Determine if a task is suspended 
-- rtems_task_set_priority - Set task priority
+- `rtems_task_set_priority` - Set task priority
 - `rtems_task_get_priority` - Get task priority
 - `rtems_task_mode` - Change current task’s mode
 - `rtems_task_wake_after` - Wake up after interval
@@ -124,8 +124,14 @@ A task cannot be restarted unless it has previously been started (i.e. dormant t
 All restarted tasks are placed in the ready state.
 
 ### `rtems_task_delete` - Delete a task
-RTEMS provides the rtems_task_delete directive to allow a task to delete itself or any other task. This directive removes all RTEMS references to the task, frees the task’s control block, removes it from resource wait queues, and deallocates its stack as well as the optional floating point context. The task’s name and ID become inactive at this time, and any subsequent refer- ences to either of them is invalid. In fact, RTEMS may reuse the task ID for another task which is created later in the application.
-Unexpired delay timers (i.e. those used by rtems_task_wake_after and rtems_task_wake_when) and timeout timers associated with the task are automatically deleted, however, other resources dynamically allocated by the task are NOT automatically returned to RTEMS. Therefore, before a task is deleted, all of its dynamically allocated resources should be deallocated by the user. This may be accomplished by instructing the task to delete itself rather than directly deleting the task. Other tasks may instruct a task to delete itself by sending a “delete self” message, event, or signal, or by restarting the task with special arguments which instruct the task to delete itself.
+RTEMS provides the `rtems_task_delete` directive to allow a task to delete itself or any other task.
+This directive removes **all RTEMS references to the task**, **frees the task’s control block**, **removes it from resource wait queues**, and **deallocates its stack** as well as the **optional floating point context**.
+The task’s name and ID become inactive at this time, and any subsequent references to either of them is invalid.
+In fact, RTEMS may reuse the task ID for another task which is created later in the application.
+**Unexpired delay timers** (i.e. those used by `rtems_task_wake_after` and `rtems_task_wake_when`) and **timeout timers** associated with the task are automatically deleted, however, other resources dynamically allocated by the task are NOT automatically returned to RTEMS.
+Therefore, before a task is deleted, all of its dynamically allocated resources should be deallocated by the user.
+This may be accomplished by instructing the task to delete itself rather than directly deleting the task.
+Other tasks may instruct a task to delete itself by sending a **“delete self”** message, event, or signal, or by restarting the task with special arguments which instruct the task to delete itself.
 
 ### `rtems_task_suspend` - Suspend a task
 The `rtems_task_suspend` directive is used to place either the caller or another task into a sus- pended state.
@@ -146,7 +152,7 @@ The `rtems_task_set_priority` directive is used to obtain or change the current 
 If the new priority requested is `RTEMS_CURRENT_PRIORITY` or the task’s actual priority, then the current priority will be returned and the task’s priority will remain unchanged.
 If the task’s priority is altered, then the task will be scheduled according to its new priority.
 
-`rtems_task_get_priority` - Get task priority
+### `rtems_task_get_priority` - Get task priority
 
 ### `rtems_task_mode` - Change current task’s mode
 The `rtems_task_mode` directive is used to obtain or change the current execution mode of the calling task
@@ -160,8 +166,8 @@ A task calling the `rtems_task_wake_after` directive with a delay interval of `R
 The `rtems_task_wake_when` directive creates a sleep timer which allows a task to go to sleep until a specified date and time.
 The calling task is blocked until the specified date and time has occurred, at which time the task is unblocked.
 
-`rtems_task_get_scheduler` - Get scheduler of a task
-`rtems_task_set_scheduler` - Set scheduler of a task
-`rtems_task_get_affinity` - Get task processor affinity
-`rtems_task_set_affinity` - Set task processor affinity
-`rtems_task_iterate` - Iterate Over Tasks
+### `rtems_task_get_scheduler` - Get scheduler of a task
+### `rtems_task_set_scheduler` - Set scheduler of a task
+### `rtems_task_get_affinity` - Get task processor affinity
+### `rtems_task_set_affinity` - Set task processor affinity
+### `rtems_task_iterate` - Iterate Over Tasks
