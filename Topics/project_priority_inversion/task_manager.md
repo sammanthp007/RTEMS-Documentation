@@ -97,8 +97,48 @@ All RTEMS tasks are invoked with a single argument which is specified when they 
 ## Directives
 ### `rtems_task_create` - Create a task
 The `rtems_task_create` directive creates a task by allocating a **task control block**, **assigning the task a user-specified name**, **allocating it a stack and floating point context area**, **setting a user- specified initial priority**, **setting a user-specified initial mode**, and **assigning it a task ID**.
+
 Newly created tasks are initially placed in the dormant state.
+
 All RTEMS tasks execute in the most privileged mode of the processor.
+
+This directive may cause the calling task to be preempted.
+
+If the requested stack size is less than the configured minimum stack size, then RTEMS will use the configured minimum as the stack size for this task.
+In addition to being able to specify the task stack size as a integer, there are two constants which may be specified:
+
+#### `RTEMS_MINIMUM_STACK_SIZE`
+The minimum stack size RECOMMENDED for use on this processor.
+This value is selected by the RTEMS developers conservatively to minimize the risk of blown stacks for most user applications.
+Using this constant when specifying the task stack size, indicates that the stack size will be at least `RTEMS_MINIMUM_STACK_SIZE` bytes in size.
+If the user configured minimum stack size is larger than the recommended minimum, then it will be used.
+
+#### `RTEMS_CONFIGURED_MINIMUM_STACK_SIZE`
+Indicates this task is to be created with a stack size of the minimum stack size that was con- figured by the application.
+If not explicitly configured by the application, the default configured minimum stack size is the processor dependent value `RTEMS_MINIMUM_STACK_SIZE`.
+
+Task attribute constants are defined by RTEMS:
+`RTEMS_LOCAL`: local task (default)
+`RTEMS_GLOBAL`: global task
+`RTEMS_NO_FLOATING_POINT`: does not use coprocessor (default)
+`RTEMS_FLOATING_POINT`: uses numeric coprocessor
+
+Tasks should not be made global unless remote tasks must interact with them.
+This avoids the system overhead incurred by the creation of a global task.
+When a global task is created, the task’s name and id must be transmitted to every node in the system for insertion in the local copy of the global object table.
+
+The total number of global objects, including tasks, is limited by the `maximum_global_objects` field in the Configuration Table.
+
+```
+rtems_status_code rtems_task_create(
+    rtems_name  name,
+    rtems_task_priority  initial_priority,
+    size_t stack_size,
+    rtems_mode initial_modes,
+    rtems_attribute attribute_set,
+    rtems_id *id
+);
+```
 
 
 ### `rtems_task_ident` - Get ID of a task
