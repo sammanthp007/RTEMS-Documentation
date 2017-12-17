@@ -154,16 +154,47 @@ rtems_status_code rtems_task_ident( rtems_name name,
 
 A task may obtain its own id by specifying `RTEMS_SELF`
 
+This directive will not cause the running task to be preempted.
+
+
+This directive does not generate activity on remote nodes.
+It accesses only the local copy of the global object table.
+
 ### `rtems_task_self` - Obtain ID of caller
+Returns the object Id of the calling task.
+
+If called from an interrupt service routine, this directive will return the Id of the interrupted task.
+
+```
+rtems_id rtems_task_self(void);
+```
+
 ### `rtems_task_start` - Start a task
 The `rtems_task_start` directive is used to place a dormant task in the ready state.
-This enables the task to compete, based on its current priority, for the processor and other system resources.
+This enables the task to compete, based on its current priority, for the processor and other system resources. The calling task will be preempted if its preemption mode is enabled and the task being started has a higher priority.
 
 Any actions, such as suspension or change of priority, performed on a task prior to starting it are nullified when the task is started.
 
 With the `rtems_task_start` directive the user specifies the task’s starting address and argument.
 The argument is used to communicate some startup information to the task. As part of this directive, RTEMS initializes the task’s stack based upon the task’s initial execution mode and start address.
 The starting argument is passed to the task in accordance with the target processor’s calling convention.
+
+```
+rtems_status_code rtems_task_start(
+    rtems_id            id,
+    rtems_task_entry    entry_point,
+    rtems_task_argument argument
+);
+```
+
+This directive readies the task, specified by id, for execution based on the priority and exe- cution mode specified when the task was created.
+
+The starting address of the task is given in `entry_point`.
+
+The task’s starting argument is contained in argument.
+This argument can be a single value or used as an index into an array of parameter blocks.
+The type of this numeric argument is an unsigned integer type with the property that any valid pointer to void can be converted to this type and then converted back to a pointer to void.
+The result will compare equal to the original pointer.
 
 ### `rtems_task_restart` - Restart a task
 The `rtems_task_restart` directive restarts a task at its initial starting address with its original priority and execution mode, but with a possibly different argument.
@@ -175,6 +206,20 @@ Although references to resources that have been requested are cleared, resources
 A task cannot be restarted unless it has previously been started (i.e. dormant tasks cannot be restarted).
 
 All restarted tasks are placed in the ready state.
+
+A task can be restarted from any state, except the dormant state.
+
+```
+rtems_status_code rtems_task_restart(
+  rtems_id            id,
+  rtems_task_argument argument
+);
+```
+
+This new argument may be used to distinguish between the initial `rtems_task_start` of the task and any ensuing calls to `rtems_task_restart` of the task.
+This can be beneficial in deleting a task. Instead of deleting a task using the `rtems_task_delete` directive, a task can delete another task by restarting that task, and allowing that task to release resources back to RTEMS and then delete itself.
+
+The task must reside on the local node, even if the task was created with the `RTEMS_GLOBAL` option.
 
 ### `rtems_task_delete` - Delete a task
 RTEMS provides the `rtems_task_delete` directive to allow a task to delete itself or any other task.
