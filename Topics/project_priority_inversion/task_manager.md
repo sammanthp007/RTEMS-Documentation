@@ -145,6 +145,14 @@ rtems_status_code rtems_task_create(
 The task ID may be obtained later using the `rtems_task_ident` directive.
 The task ID is used by other directives to manipulate this task.
 
+```
+rtems_status_code rtems_task_ident( rtems_name name,
+  uint32_t node,
+  rtems_id *id
+);
+```
+
+A task may obtain its own id by specifying `RTEMS_SELF`
 
 ### `rtems_task_self` - Obtain ID of caller
 ### `rtems_task_start` - Start a task
