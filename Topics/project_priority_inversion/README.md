@@ -52,6 +52,9 @@ cd $HOME/development/rtems/kernel
 mkdir erc32
 cd erc32
 $HOME/development/rtems/kernel/rtems/configure --prefix=$HOME/development/rtems/5 --target=sparc-rtems5 --enable-rtemsbsp=erc32 --enable-posix ENABLE_STRICT_ORDER_MUTEX=1 --enable-tests --disable-networking 
+
+# for 4.10
+$HOME/development/rtems/kernel/rtems/configure --prefix=$HOME/development/rtems/4.10 --target=sparc-rtems4.10 --enable-rtemsbsp=erc32 --enable-posix ENABLE_STRICT_ORDER_MUTEX=1 --enable-tests --disable-networking
 ```
 
 ## Run Tests
