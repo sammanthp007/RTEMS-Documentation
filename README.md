@@ -250,6 +250,7 @@ List all architectures
 $ $HOME/development/rtems/rsb/source-builder/sb-set-builder --list-bsets
 ```
 
+### Troubleshooting
 
 #### Missing Packages or Broken Mirror
 If some packages are missing, you may need to download the zip from somewhere. I have some save in google drive since the mirrors seem to be broken. You can download the required packages at [Drive](https://drive.google.com/file/d/0B_ZAkr8A2WagRkJEQUZhOWVtY3M/view?usp=sharing)
