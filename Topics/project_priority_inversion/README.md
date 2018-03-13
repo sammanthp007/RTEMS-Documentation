@@ -58,6 +58,9 @@ $HOME/development/rtems/kernel/rtems/configure --prefix=$HOME/development/rtems/
 
 # for 4.11
 $HOME/development/rtems/kernel/rtems/configure --prefix=$HOME/development/rtems/4.11 --target=sparc-rtems4.11 --enable-rtemsbsp=erc32 --enable-posix ENABLE_STRICT_ORDER_MUTEX=1 --enable-tests --disable-networking
+
+# for 4.11 without STRICT ORDER MUTEX since it is broken
+$HOME/development/rtems/kernel/rtems/configure --prefix=$HOME/development/rtems/4.11 --target=sparc-rtems4.11 --enable-rtemsbsp=erc32 --enable-posix --enable-tests --disable-networking
 ```
 
 ## Run Tests
